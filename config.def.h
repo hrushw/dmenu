@@ -16,6 +16,8 @@ static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
 	[SchemeNorm] = { "#bbbbbb", "#222222" },
 	[SchemeSel] = { "#eeeeee", "#005577" },
+	[SchemeNormHighlight] = { "#ffc978", "#222222" },
+	[SchemeSelHighlight] = { "#ffc978", "#005577" },
 	[SchemeOut] = { "#000000", "#00ffff" },
 	[SchemeCaret] = { "#eeeeee", "#222222" },
 	[SchemeBorder] = { "#eeeeee", "#005577" }, /* fg is redundant in this case */
@@ -24,6 +26,8 @@ static const char *colors[SchemeLast][2] = {
 static const unsigned int alphas[SchemeLast][2] = {
 	[SchemeNorm] = { OPAQUE, alpha },
 	[SchemeSel] = { OPAQUE, alpha },
+	[SchemeNormHighlight] = { OPAQUE, alpha },
+	[SchemeSelHighlight] = { OPAQUE, alpha },
 	[SchemeOut] = { OPAQUE, alpha },
 	[SchemeCaret] = { OPAQUE, alpha },
 	[SchemeBorder] = { OPAQUE, alpha }, /* fg opacity is redundant */
