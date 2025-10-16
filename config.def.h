@@ -28,8 +28,8 @@ static const unsigned int alphas[SchemeLast][2] = {
 	[SchemeBorder] = { OPAQUE, alpha }, /* fg opacity is redundant */
 };
 /* -l and -g options; controls number of lines and columns in grid if > 0 */
-static unsigned int lines      = 8;
-static unsigned int columns    = 2;
+static unsigned int lines      = 0;
+static unsigned int columns    = 0;
 
 /*
  * Characters not considered part of a word while deleting words
