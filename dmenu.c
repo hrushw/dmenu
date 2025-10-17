@@ -449,7 +449,7 @@ match(void)
 			matches = lsubstr;
 		matchend = substrend;
 	}
-	curr = sel = matches;
+	curr = matches;
 	calcoffsets();
 }
 
@@ -635,7 +635,7 @@ insert:
 	case XK_Left:
 		if (columns > 1) {
 			if (!sel)
-				return;
+				goto kp_left;
 			tmpsel = sel;
 			for (i = 0; i < lines; i++) {
 				if (!tmpsel->left || tmpsel->left->right != tmpsel) {
@@ -655,6 +655,7 @@ insert:
 			break;
 		}
 	case XK_KP_Left:
+kp_left:
 		if (cursor > 0 && (!sel || !sel->left || lines > 0)) {
 			cursor = nextrune(-1);
 			break;
@@ -668,6 +669,8 @@ insert:
 			curr = prev;
 			calcoffsets();
 		}
+		else if (sel && !sel->left)
+			sel = NULL;
 		break;
 	case XK_Next:
 	case XK_KP_Next:
@@ -696,7 +699,7 @@ insert:
 	case XK_Right:
 		if (columns > 1) {
 			if (!sel)
-				return;
+				goto kp_right;
 			tmpsel = sel;
 			for (i = 0; i < lines; i++) {
 				if (!tmpsel->right ||  tmpsel->right->left != tmpsel) {
@@ -716,6 +719,7 @@ insert:
 			break;
 		}
 	case XK_KP_Right:
+kp_right:
 		if (text[cursor] != '\0') {
 			cursor = nextrune(+1);
 			break;
@@ -729,6 +733,8 @@ insert:
 			curr = next;
 			calcoffsets();
 		}
+		else if (!sel && curr)
+			sel = curr;
 		break;
 	case XK_Tab:
 		if (!sel)
