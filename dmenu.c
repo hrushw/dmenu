@@ -1023,6 +1023,8 @@ main(int argc, char *argv[])
 			embed = argv[++i];
 		else if (!strcmp(argv[i], "-bw"))
 			border_width = atoi(argv[++i]); /* border width */
+		else if (!strcmp(argv[i], "-mw"))
+			min_width = atoi(argv[++i]);
 		else
 			usage();
 
