@@ -1,2 +1,2 @@
 #!/bin/sh
-dmenu_path | dmenu -c -l 20 -g 3 -mw 720 -p "Launch: " "$@" | ${SHELL:-"/bin/sh"} &
+dmenu_path | dmenu -i -c -l 20 -g 3 -mw 720 -p "Launch: " "$@" | ${SHELL:-"/bin/sh"} &
